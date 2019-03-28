@@ -25,7 +25,7 @@ function newApp() {
   
   // html pages
   app.use('/', require('./src/routes/html_pages'))
-
+  
   // Basic 404 handler
   app.use((req, res) => {
     res.status(404).send('Not Found')
@@ -50,7 +50,7 @@ class AppServer {
   }
 
   start() {
-    this.server = this.app.listen( 3033, () => {
+    this.server = this.app.listen( 3038, () => {
       const port = this.server.address().port
       console.log(`app listening on port ${port}`)
       process.on('SIGINT', this.stop)

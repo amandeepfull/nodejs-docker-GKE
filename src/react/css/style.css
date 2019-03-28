@@ -1,0 +1,12 @@
+.contactViewHide { 
+    display: none;
+    margin-left : 30%;
+  }
+  .contactViewShow{
+      display: block;
+      margin-left : 30%;
+      
+  }
+  .contactUpdAndDelMsg{
+      margin: 30%;
+  }

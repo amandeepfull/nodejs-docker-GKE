@@ -16,7 +16,7 @@ class ContactSave extends React.Component{
         }
 
        this.handleClick = this.handleClick.bind(this);
-       this.ContactService = new ContactService();
+       this.contactService = new ContactService();
 
     }
 
@@ -25,16 +25,15 @@ class ContactSave extends React.Component{
         switch(e.target.id){
             case 'button-save-contact':
             let contactInfo = this.getContactInfoForSave();
-           this.ContactService.saveContact(contactInfo).then(resp=>{
-                if(!resp){
-                    console.log("error");
-                }
+            this.contactService.saveContact(contactInfo).then(resp=>{
+            
                 this.setState({titleValue: "Successfully updated!!!"})
 
                 let action = new ContactActions().updateContact(resp);
                 this.props.dispatch(action);
             })
             break;
+            
             case 'button-get-contacts':
             this.setState({
             view : 'contacts-list-view'

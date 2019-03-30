@@ -5,7 +5,7 @@ import Title from './title'
 import AppConfig from "../AppConfig"
 import Ajax from '../services/Ajax'
 import Contact from '../containers/contact'
-import ContactActions from '../actions/contact'
+import contactActionCreater from '../actions/contact'
 
 class ContactsView extends React.Component {
 
@@ -18,7 +18,7 @@ class ContactsView extends React.Component {
         this.getContact = this.getContact.bind(this);
         this.goBack = this.goBack.bind(this);
         this.ajax = new Ajax();
-        this.contactActions = new ContactActions();
+        this.contactActionCreater = new contactActionCreater();
     }
 
     componentDidMount() {
@@ -26,14 +26,14 @@ class ContactsView extends React.Component {
         fetch(AppConfig.getServerUrl() + "api/v1/user/contacts")
             .then(response => response.json())
             .then(data => {
-                let action = this.contactActions.fetchContacts(data.users);
+                let action = this.contactActionCreater.fetchContacts(data.users);
                 this.props.dispatch(action);
             });
     }
 
     getContact(event) {
 
-        let action = this.contactActions.contactDeleteMsgView(false);
+        let action = this.contactActionCreater.contactDeleteMsgView(false);
         this.props.dispatch(action);
         this.ajax.makeRequest("GET", "api/v1/user/contact/" + event.target.id).then((resp => {
             this.setState({

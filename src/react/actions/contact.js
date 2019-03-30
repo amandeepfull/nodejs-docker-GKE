@@ -2,7 +2,7 @@
 
 import {UPDATE_CONTACT, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW} from './types'
 
-export class ContactActions{
+export class ContactActionCreater{
 
   updateContact = (payload) => {
     return { type: UPDATE_CONTACT, payload : payload };
@@ -17,4 +17,4 @@ fetchContacts = (payload) =>{
   }
 }
 
-export default ContactActions;
+export default ContactActionCreater;

@@ -8,4 +8,6 @@ const ContactsViewContainer = connect(
 mapStateToProps,
 )(ContactsView)
 
+
+
 export default ContactsViewContainer;

@@ -3,7 +3,7 @@ import Button from './button';
 import Header from './header';
 import Title from './title';
 import ContactsView from '../containers/contactsView';
-import { ContactActions } from '../actions/contact';
+import { ContactActionCreater } from '../actions/contact';
 import ContactService from '../services/contactService';
 class ContactSave extends React.Component{
     
@@ -28,7 +28,7 @@ class ContactSave extends React.Component{
             
                 this.setState({titleValue: "Successfully updated!!!"})
 
-                let action = new ContactActions().updateContact(resp);
+                let action = new ContactActionCreater().updateContact(resp);
                 this.props.dispatch(action);
             })
             break;

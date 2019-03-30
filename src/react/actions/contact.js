@@ -16,3 +16,5 @@ fetchContacts = (payload) =>{
     return {type : CONTACT_DELETE_MSG_VIEW, payload : payload};
   }
 }
+
+export default ContactActions;

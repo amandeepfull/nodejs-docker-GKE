@@ -2,8 +2,7 @@ import React from 'react';
 import Button from './button';
 import Header from './header';
 import Title from './title';
-import ContactsView from '../components/contactsView';
-import {connect} from 'react-redux';
+import ContactsView from '../containers/contactsView';
 import { ContactActions } from '../actions/contact';
 import ContactService from '../services/contactService';
 class ContactSave extends React.Component{
@@ -33,7 +32,7 @@ class ContactSave extends React.Component{
                 this.props.dispatch(action);
             })
             break;
-            
+
             case 'button-get-contacts':
             this.setState({
             view : 'contacts-list-view'
@@ -82,8 +81,5 @@ class ContactSave extends React.Component{
 }
 }
 
-const mapStateToProps = (state) => ({
-    contactReducer : state.ContactReducer
-  })
   
-export default connect(mapStateToProps, null)(ContactSave);
+export default ContactSave;

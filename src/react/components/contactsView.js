@@ -4,10 +4,9 @@ import Header from './header'
 import Title from './title'
 import AppConfig from "../AppConfig"
 import Ajax from '../services/Ajax'
-import Contact from './contact'
-import { connect } from 'react-redux';
-import { ContactActions } from '../actions/contact';
-import store from '../store/commonStore';
+import Contact from '../containers/contact'
+import ContactActions from '../actions/contact'
+
 class ContactsView extends React.Component {
 
     constructor(props) {
@@ -19,7 +18,7 @@ class ContactsView extends React.Component {
         this.getContact = this.getContact.bind(this);
         this.goBack = this.goBack.bind(this);
         this.ajax = new Ajax();
-    this.contactActions = new ContactActions();
+        this.contactActions = new ContactActions();
     }
 
     componentDidMount() {
@@ -45,7 +44,7 @@ class ContactsView extends React.Component {
     }
 
     goBack() { window.location.href = '/'; }
-    
+
     render() {
         
         if (!this.props.contactReducer.contacts.length)
@@ -76,8 +75,6 @@ class ContactsView extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    contactReducer: state.ContactReducer
-})
 
-export default connect(mapStateToProps, null)(ContactsView);
+
+export default ContactsView;

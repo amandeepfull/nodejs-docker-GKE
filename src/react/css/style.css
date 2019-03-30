@@ -1,12 +1,38 @@
 .contactViewHide { 
     display: none;
-    margin-left : 30%;
+    margin-left : 32%;
+    float: right;
+    
   }
   .contactViewShow{
-      display: block;
-      margin-left : 30%;
-      
+    display: block;
+    float: right;
+    margin-right: 25%;
+    margin-top: 15%;
+    height: 200;
+    width: 550;
   }
   .contactUpdAndDelMsg{
-      margin: 30%;
+      float: right;
+    margin-right: 25%;
+    margin-top: 15%;
+    height: 200;
+    width: 550;
   }
+  .contactUpdateView{
+    display: block;
+    margin-left : 30%;
+  }
+
+ .contactView{
+     display: block;
+
+ }
+
+.contactsView{
+    height: auto;
+    width: 30%;
+    padding-left: 10;
+    display: block;
+    float: left;
+}

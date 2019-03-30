@@ -2,60 +2,78 @@ import React from 'react'
 import Button from '../components/button'
 import Ajax from '../services/Ajax'
 import ContactsView from '../components/contactsView'
-
+import { ActionCreator } from '../actionCreater/ActionCreator';
+import store from '../store/commonStore';
+import {connect} from 'react-redux';
 class Contact extends React.Component{
      
     constructor(props){
         super(props);
-        this.state = {
-            contactDeleted : false,
-            contactUpdated : false
-        }
-        this.handleUpdateContact = this.handleUpdateContact.bind(this);
-        this.handleDeleteContact = this.handleDeleteContact.bind(this);
+        
+        this.handleClick = this.handleClick.bind(this);
+        this.getViewClass = this.getViewClass.bind(this);
         this.ajax = new Ajax();
+        this.actionCreater = new ActionCreator();
     }
 
-    handleDeleteContact(event){
-        this.ajax.makeRequest("DELETE", "api/v1/user/contact/"+event.target.id, null).then(resp=>{
-            this.setState({
-                contactDeleted : true
-            })
+    handleClick(event){
 
+        switch (event.target.id){
+            case 'button-delete-contact':
+            let userId = document.getElementById('button-delete-contact').getAttribute("data-userId");
+            this.ajax.makeRequest("DELETE", "api/v1/user/contact/"+userId, null).then(resp=>{
+            let action = this.actionCreater.fetchContacts(resp.users);
+            this.props.dispatch(action);
 
-        })
+            action = this.actionCreater.contactDeleteMsgView(true);
+            this.props.dispatch(action);     
+        });
+            case 'button-update-contact':
+
+            break;
+        }
     }
 
     handleUpdateContact(event){
 
+
+
+    }
+
+    getViewClass(view){
+
+        let className;
+        if(view ===  'contact-list-view')
+        className = 'contactViewHide';
+        else if(view === 'contact-card-view')
+        className = 'contactViewShow';
+        return className;
     }
 
    render(){
-    const className = this.props.display == 'none' ? "contactViewHide": "contactViewShow";
-    console.log("className : "+className);
-        console.log("this.state.contactDeleted : "+this.state.contactDeleted);
-    if(this.state.contactDeleted){
-        debugger
-       document.getElementById('contactView').remove();
     
-    return <React.Fragment><h2 className="contactUpdAndDelMsg"> Contact deleted successfully</h2>
-        
-    </React.Fragment>
+    const className = this.getViewClass(this.props.display);
+    
+    if(this.props.contactReducer.isContactDeleteMsgView){ 
+           return <div id="contact-card-view" className={className}><h2 className="contactUpdAndDelMsg"> Contact deleted successfully</h2> </div>
    }
+  
 
-    if(this.state.contactUpdated)
-    return <h2 className="contactUpdAndDelMsg"> Contact updated successfully</h2>
+    // if(this.props.contactUpdated)
 
+    // return <h2 className="contactUpdAndDelMsg"> Contact updated successfully</h2>
+    console.log( "userID : "+this.props.userId);
     return (
-        <div id="contactView" className={className}>
-        
-            <h1> Contact </h1>
-             Name : {this.props.name}<br/>
+        <div id="contact-card-view" className={className} onClick={this.handleClick}>
+
+            
+            <h1> {this.props.name} </h1>
+            
              Address : {this.props.address}<br/>
              Number : {this.props.number}<br/>
              Email : {this.props.email}<br/><br/>
-            <Button name="Update" id={this.props.id} clickButton = {this.handleUpdateContact}/>&nbsp;&nbsp;&nbsp;
-            <Button name="Delete" id={this.props.id} clickButton = {this.handleDeleteContact}/>
+            <Button name="Update" id='button-update-contact' userId={this.props.userId}/>&nbsp;&nbsp;&nbsp;
+            <Button name="Delete" id='button-delete-contact' userId={this.props.userId}/>
 
          </div>
        
@@ -64,4 +82,8 @@ class Contact extends React.Component{
 }
 
 
-export default Contact;
+const mapStateToProps = (state) => ({
+    contactReducer : state.ContactReducer
+  })
+  
+export default connect(mapStateToProps, null)(Contact);

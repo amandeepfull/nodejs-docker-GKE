@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../components/button'
 import Ajax from '../services/Ajax'
 import ContactsView from '../components/contactsView'
-import { ActionCreator } from '../actionCreater/ActionCreator';
+import { ContactActions } from '../actions/contact';
 import store from '../store/commonStore';
 import {connect} from 'react-redux';
 import ContactService from '../services/contactService';
@@ -15,8 +15,8 @@ class Contact extends React.Component{
         this.handleClick = this.handleClick.bind(this);
         this.getViewClass = this.getViewClass.bind(this);
         this.ajax = new Ajax();
-        this.actionCreater = new ActionCreator();
-        this.ContactService = new ContactService();
+        this.contactActions = new ContactActions();
+        this.contactService = new ContactService();
 
     }
 
@@ -25,11 +25,11 @@ class Contact extends React.Component{
         switch (event.target.id){
             case 'button-delete-contact':
             let userId = document.getElementById('button-delete-contact').getAttribute("data-userId");
-            this.ContactService.deleteContact(userId).then(resp=>{
-            let action = this.actionCreater.fetchContacts(resp.users);
+            this.contactService.deleteContact(userId).then(resp=>{
+            let action = this.contactActions.fetchContacts(resp.users);
             this.props.dispatch(action);
 
-            action = this.actionCreater.contactDeleteMsgView(true);
+            action = this.contactActions.contactDeleteMsgView(true);
             this.props.dispatch(action);     
         });
             case 'button-update-contact':

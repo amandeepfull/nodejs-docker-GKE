@@ -4,7 +4,7 @@ import Header from './header';
 import Title from './title';
 import ContactsView from '../components/contactsView';
 import {connect} from 'react-redux';
-import { ActionCreator } from '../actionCreater/ActionCreator';
+import { ContactActions } from '../actions/contact';
 import ContactService from '../services/contactService';
 class ContactSave extends React.Component{
     
@@ -31,7 +31,7 @@ class ContactSave extends React.Component{
                 }
                 this.setState({titleValue: "Successfully updated!!!"})
 
-                let action = new ActionCreator().updateContact(resp);
+                let action = new ContactActions().updateContact(resp);
                 this.props.dispatch(action);
             })
             break;

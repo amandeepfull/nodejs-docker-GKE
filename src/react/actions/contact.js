@@ -1,7 +1,8 @@
 
-import {UPDATE_CONTACT, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW} from '../actions/Actions'
 
-export class ActionCreator{
+import {UPDATE_CONTACT, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW} from './types'
+
+export class ContactActions{
 
   updateContact = (payload) => {
     return { type: UPDATE_CONTACT, payload : payload };

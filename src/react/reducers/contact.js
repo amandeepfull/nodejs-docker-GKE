@@ -1,4 +1,4 @@
-import {UPDATE_CONTACT, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW,action} from '../actions/Actions.js';
+import {UPDATE_CONTACT, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW,action} from '../actions/types';
 import { isNull } from 'util';
 
 let contact =  {'firstName':"Amand"};

@@ -1,5 +1,4 @@
 import React from 'react'
-import ButtonEventService from '../services/buttonEventService'
 
 class Button extends React.Component{
     render(){

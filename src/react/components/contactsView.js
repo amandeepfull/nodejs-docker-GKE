@@ -2,12 +2,11 @@ import React from 'react'
 import Button from './button'
 import Header from './header'
 import Title from './title'
-import ButtonEventService from '../services/buttonEventService'
 import AppConfig from "../AppConfig"
 import Ajax from '../services/Ajax'
 import Contact from './contact'
 import { connect } from 'react-redux';
-import { ActionCreator } from '../actionCreater/ActionCreator';
+import { ContactActions } from '../actions/contact';
 import store from '../store/commonStore';
 class ContactsView extends React.Component {
 
@@ -20,7 +19,7 @@ class ContactsView extends React.Component {
         this.getContact = this.getContact.bind(this);
         this.goBack = this.goBack.bind(this);
         this.ajax = new Ajax();
-    this.actionCreater = new ActionCreator();
+    this.contactActions = new ContactActions();
     }
 
     componentDidMount() {
@@ -28,14 +27,14 @@ class ContactsView extends React.Component {
         fetch(AppConfig.getServerUrl() + "api/v1/user/contacts")
             .then(response => response.json())
             .then(data => {
-                let action = this.actionCreater.fetchContacts(data.users);
+                let action = this.contactActions.fetchContacts(data.users);
                 this.props.dispatch(action);
             });
     }
 
     getContact(event) {
 
-        let action = this.actionCreater.contactDeleteMsgView(false);
+        let action = this.contactActions.contactDeleteMsgView(false);
         this.props.dispatch(action);
         this.ajax.makeRequest("GET", "api/v1/user/contact/" + event.target.id).then((resp => {
             this.setState({
@@ -46,6 +45,7 @@ class ContactsView extends React.Component {
     }
 
     goBack() { window.location.href = '/'; }
+    
     render() {
         
         if (!this.props.contactReducer.contacts.length)

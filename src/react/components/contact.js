@@ -5,6 +5,8 @@ import ContactsView from '../components/contactsView'
 import { ActionCreator } from '../actionCreater/ActionCreator';
 import store from '../store/commonStore';
 import {connect} from 'react-redux';
+import ContactService from '../services/contactService';
+
 class Contact extends React.Component{
      
     constructor(props){
@@ -14,6 +16,8 @@ class Contact extends React.Component{
         this.getViewClass = this.getViewClass.bind(this);
         this.ajax = new Ajax();
         this.actionCreater = new ActionCreator();
+        this.ContactService = new ContactService();
+
     }
 
     handleClick(event){
@@ -21,7 +25,7 @@ class Contact extends React.Component{
         switch (event.target.id){
             case 'button-delete-contact':
             let userId = document.getElementById('button-delete-contact').getAttribute("data-userId");
-            this.ajax.makeRequest("DELETE", "api/v1/user/contact/"+userId, null).then(resp=>{
+            this.ContactService.deleteContact(userId).then(resp=>{
             let action = this.actionCreater.fetchContacts(resp.users);
             this.props.dispatch(action);
 

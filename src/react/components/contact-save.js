@@ -2,11 +2,10 @@ import React from 'react';
 import Button from './button';
 import Header from './header';
 import Title from './title';
-import ButtonEventService from '../services/buttonEventService';
 import ContactsView from '../components/contactsView';
 import {connect} from 'react-redux';
 import { ActionCreator } from '../actionCreater/ActionCreator';
-
+import ContactService from '../services/contactService';
 class ContactSave extends React.Component{
     
     constructor(props){
@@ -17,17 +16,16 @@ class ContactSave extends React.Component{
         }
 
        this.handleClick = this.handleClick.bind(this);
-      
+       this.ContactService = new ContactService();
+
     }
 
     handleClick (e){
-        console.log("event triggered", e.target.id);
-        const buttonEventService = new ButtonEventService();
-        
-        var response;
+
         switch(e.target.id){
             case 'button-save-contact':
-            buttonEventService.handleSaveContact().then(resp=>{
+            let contactInfo = this.getContactInfoForSave();
+           this.ContactService.saveContact(contactInfo).then(resp=>{
                 if(!resp){
                     console.log("error");
                 }
@@ -44,6 +42,22 @@ class ContactSave extends React.Component{
         }
         
 
+    }
+
+    getContactInfoForSave(){
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let address = document.getElementById('address').value;
+        let number = document.getElementById('number').value;
+        
+        let contact = {
+            name : name,
+            email : email,
+            address : address,
+            number : number
+        }
+
+        return contact;
     }
 
     render(){

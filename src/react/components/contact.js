@@ -4,7 +4,7 @@ import Ajax from '../services/Ajax'
 import { ContactActionCreater } from '../actions/contact';
 import ContactService from '../services/contactService';
 import Message from './message';
-
+import ContactUpdate from '../containers/contactUpdate';
 
 const style = {
     hideContactCard : {
@@ -13,8 +13,13 @@ const style = {
 
     showContactCard:{
         display: 'block',
+    },
+
+    pTag :{
+        display : 'inline'
     }
 }
+
 class Contact extends React.Component{
      
     constructor(props){
@@ -41,37 +46,37 @@ class Contact extends React.Component{
             this.props.dispatch(action);     
         });
             case 'button-update-contact':
+            
+            let action = this.contactActionCreater.updateContactView(true);
+            this.props.dispatch(action);
 
             break;
         }
     }
 
-    handleUpdateContact(event){
-
-
-
-    }
 
    render(){
     
     let contactCardStyles = this.props.display ? style.showContactCard : style.hideContactCard ;
   
-    if(this.props.contactReducer.isContactDeleteMsgView){
+    if(this.props.contactReducer.isContactDeleteMsgView)
            return <Message msg="contact deleted successfully"/>
-   }
+   
   
+   if(this.props.contactReducer.isUpdateContactView)
+            return <ContactUpdate/>
+   
     return (
-
         <div id="contact-card-view" style={contactCardStyles} className='contactView' onClick={this.handleClick}>    
-            <h1> {this.props.name} </h1>
+            <h1 id="user-name" >{this.props.name}</h1><br/>
             
-             Address : {this.props.address}<br/>
-             Number : {this.props.number}<br/>
-             Email : {this.props.email}<br/><br/>
+             Address : <p style={style.pTag} id="user-address">{this.props.address}</p><br/>
+             Number : <p style={style.pTag} id="user-number">{this.props.number}</p><br/>
+             Email : <p style={style.pTag} id="user-email">{this.props.email}</p><br/><br/>
             <Button name="Update" id='button-update-contact' userId={this.props.userId}/>&nbsp;&nbsp;&nbsp;
             <Button name="Delete" id='button-delete-contact' userId={this.props.userId}/>
 
-         </div>
+    </div>
        
     )
 }

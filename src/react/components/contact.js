@@ -2,21 +2,31 @@ import React from 'react'
 import Button from '../components/button'
 import Ajax from '../services/Ajax'
 import { ContactActionCreater } from '../actions/contact';
-import store from '../store/commonStore';
-import {connect} from 'react-redux';
 import ContactService from '../services/contactService';
+import Message from './message';
 
+
+const style = {
+    hideContactCard : {
+        display : 'none'     
+    },
+
+    showContactCard:{
+        display: 'block',
+    }
+}
 class Contact extends React.Component{
      
     constructor(props){
         super(props);
         
         this.handleClick = this.handleClick.bind(this);
-        this.getViewClass = this.getViewClass.bind(this);
         this.ajax = new Ajax();
         this.contactActionCreater = new ContactActionCreater();
         this.contactService = new ContactService();
     }
+
+    
 
     handleClick(event){
 
@@ -42,33 +52,17 @@ class Contact extends React.Component{
 
     }
 
-    getViewClass(view){
-
-        let className;
-        if(view ===  'contact-list-view')
-        className = 'contactViewHide';
-        else if(view === 'contact-card-view')
-        className = 'contactViewShow';
-        return className;
-    }
-
    render(){
     
-    const className = this.getViewClass(this.props.display);
-    
-    if(this.props.contactReducer.isContactDeleteMsgView){ 
-           return <div id="contact-card-view" className={className}><h2 className="contactUpdAndDelMsg"> Contact deleted successfully</h2> </div>
+    let contactCardStyles = this.props.display ? style.showContactCard : style.hideContactCard ;
+  
+    if(this.props.contactReducer.isContactDeleteMsgView){
+           return <Message msg="contact deleted successfully"/>
    }
   
-
-    // if(this.props.contactUpdated)
-
-    // return <h2 className="contactUpdAndDelMsg"> Contact updated successfully</h2>
-    console.log( "userID : "+this.props.userId);
     return (
-        <div id="contact-card-view" className={className} onClick={this.handleClick}>
 
-            
+        <div id="contact-card-view" style={contactCardStyles} className='contactView' onClick={this.handleClick}>    
             <h1> {this.props.name} </h1>
             
              Address : {this.props.address}<br/>
@@ -84,8 +78,5 @@ class Contact extends React.Component{
 }
 
 
-const mapStateToProps = (state) => ({
-    contactReducer : state.ContactReducer
-  })
   
-export default connect(mapStateToProps, null)(Contact);
+export default Contact;

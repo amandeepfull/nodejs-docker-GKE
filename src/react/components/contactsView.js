@@ -12,7 +12,7 @@ class ContactsView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: "contact-list-view",
+            contactCardViewEnable : false,
             contact :{}
         }
         this.getContact = this.getContact.bind(this);
@@ -38,7 +38,7 @@ class ContactsView extends React.Component {
         this.ajax.makeRequest("GET", "api/v1/user/contact/" + event.target.id).then((resp => {
             this.setState({
                 contact: resp.user,
-                view: 'contact-card-view',
+                contactCardViewEnable: true,
             })
         }))
     }
@@ -68,7 +68,7 @@ class ContactsView extends React.Component {
                 </div>
                 </div>
                
-               <Contact display={this.state.view} userId={this.state.contact.id} name={this.state.contact.name} address={this.state.contact.address} number={this.state.contact.number} email={this.state.contact.email} />
+               <Contact display={this.state.contactCardViewEnable} userId={this.state.contact.id} name={this.state.contact.name} address={this.state.contact.address} number={this.state.contact.number} email={this.state.contact.email} />
             </React.Fragment>
         )
 

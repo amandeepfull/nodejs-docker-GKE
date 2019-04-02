@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../components/button'
 import Ajax from '../services/Ajax'
 import { ContactActionCreater } from '../actions/contact';
 import ContactService from '../services/contactService';
@@ -37,7 +36,7 @@ class Contact extends React.Component{
 
         switch (event.target.id){
             case 'button-delete-contact':
-            let userId = document.getElementById('button-delete-contact').getAttribute("data-userId");
+            let userId = document.getElementById('button-delete-contact').getAttribute("data-userid");
             this.contactService.deleteContact(userId).then(resp=>{
             let action = this.contactActionCreater.fetchContacts(resp.users);
             this.props.dispatch(action);
@@ -45,6 +44,7 @@ class Contact extends React.Component{
             action = this.contactActionCreater.contactDeleteMsgView(true);
             this.props.dispatch(action);     
         });
+        break;
             case 'button-update-contact':
             
             let action = this.contactActionCreater.updateContactView(true);
@@ -64,7 +64,7 @@ class Contact extends React.Component{
    
   
    if(this.props.contactReducer.isUpdateContactView)
-            return <ContactUpdate/>
+            return <ContactUpdate userId={this.props.userId}/>
    
     return (
         <div id="contact-card-view" style={contactCardStyles} className='contactView' onClick={this.handleClick}>    
@@ -73,8 +73,8 @@ class Contact extends React.Component{
              Address : <p style={style.pTag} id="user-address">{this.props.address}</p><br/>
              Number : <p style={style.pTag} id="user-number">{this.props.number}</p><br/>
              Email : <p style={style.pTag} id="user-email">{this.props.email}</p><br/><br/>
-            <Button name="Update" id='button-update-contact' userId={this.props.userId}/>&nbsp;&nbsp;&nbsp;
-            <Button name="Delete" id='button-delete-contact' userId={this.props.userId}/>
+            <button  id='button-update-contact' data-userid={this.props.userId}>Update</button>&nbsp;&nbsp;&nbsp;
+            <button  id='button-delete-contact' data-userid={this.props.userId}>Delete</button>
 
     </div>
        

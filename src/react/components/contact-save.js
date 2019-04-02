@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './button';
 import Header from './header';
 import Title from './title';
 import ContactsView from '../containers/contactsView';
@@ -70,8 +69,8 @@ class ContactSave extends React.Component{
             Email <input type="text" id="email"/><br/>
             Address <input type="text" id="address"/><br/>
             Contact Number <input type="text" id="number"/><br/><br/>
-                <Button id="button-save-contact"  name="Add contact"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button id="button-get-contacts"  name = "Get Contacts"/>
+                <button id="button-save-contact" >Add contact</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="button-get-contacts">Get Contacts</button>
                 
         </div>)
 

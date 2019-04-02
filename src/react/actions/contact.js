@@ -1,6 +1,6 @@
 
 
-import {UPDATE_CONTACT_VIEW, FETCH_CONTACTS, CONTACT_DELETE_MSG_VIEW} from './types'
+import {UPDATE_CONTACT_VIEW, FETCH_CONTACTS,GET_CONTACT, CONTACT_DELETE_MSG_VIEW, CONTACT_CARD_VIEW} from './types'
 
 export class ContactActionCreater{
 
@@ -15,6 +15,15 @@ fetchContacts = (payload) =>{
   contactDeleteMsgView = (payload) => {
     return {type : CONTACT_DELETE_MSG_VIEW, payload : payload};
   }
+
+  contactCardView  = (payload) => {
+    return {type : CONTACT_CARD_VIEW, payload : payload};
+  }
+
+  getContact  = (payload) => {
+    return {type : GET_CONTACT, payload : payload};
+  }
+
 
 }
 

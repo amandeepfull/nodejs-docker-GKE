@@ -1,24 +1,23 @@
 import React from 'react'
-import Button from './button'
 import Header from './header'
 import Title from './title'
 import AppConfig from "../AppConfig"
 import Ajax from '../services/Ajax'
 import Contact from '../containers/contact'
 import contactActionCreater from '../actions/contact'
-
+import ContactService from '../services/contactService'
 class ContactsView extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            contactCardViewEnable : false,
             contact :{}
         }
         this.getContact = this.getContact.bind(this);
         this.goBack = this.goBack.bind(this);
         this.ajax = new Ajax();
         this.contactActionCreater = new contactActionCreater();
+        this.contactService = new ContactService();
     }
 
     componentDidMount() {
@@ -35,12 +34,18 @@ class ContactsView extends React.Component {
 
         let action = this.contactActionCreater.contactDeleteMsgView(false);
         this.props.dispatch(action);
-        this.ajax.makeRequest("GET", "api/v1/user/contact/" + event.target.id).then((resp => {
-            this.setState({
-                contact: resp.user,
-                contactCardViewEnable: true,
-            })
-        }))
+        action = this.contactActionCreater.updateContactView(false);
+        this.props.dispatch(action);
+
+        this.contactService.getContact(event.target.id).then((resp =>{
+    
+            action = this.contactActionCreater.getContact(resp.user);
+            this.props.dispatch(action);
+            action = this.contactActionCreater.contactCardView(true);
+            this.props.dispatch(action);
+        }));
+           
+    
     }
 
     goBack() { window.location.href = '/'; }
@@ -50,7 +55,7 @@ class ContactsView extends React.Component {
         if (!this.props.contactReducer.contacts.length)
             return (<div id="contactsView" className='contactsView' >
                 <Header id="getContactHeader" content="Your Contact App Contacts" />
-                <Button clickButton={this.goBack} name="Back" /><br /><br /><br />
+                <button onClick={this.goBack}>Back</button><br /><br /><br />
                 <Title value="contacts not found" /></div>
             )
             
@@ -59,16 +64,16 @@ class ContactsView extends React.Component {
             <div id="contactsView" className='contactsView'>
                 <div id="contactsViewList" className='contactListView'>
                     <Header id="getContactHeader" content="Your Contact App Contacts" />
-                    <Button clickButton={this.goBack} name="Back" /><br /><br /><br />
+                    <button onClick={this.goBack}>Back</button><br /><br /><br />
                     {this.props.contactReducer.contacts.map(contact => {
                         return (
-             <React.Fragment>  <Button name={contact.name} id={contact.id} clickButton={this.getContact} /><br /><br /></React.Fragment>
+             <React.Fragment>  <button id={contact.id} onClick={this.getContact} >{contact.name}</button><br /><br /></React.Fragment>
                         )
                     })}
                 </div>
                 </div>
                
-               <Contact display={this.state.contactCardViewEnable} userId={this.state.contact.id} name={this.state.contact.name} address={this.state.contact.address} number={this.state.contact.number} email={this.state.contact.email} />
+               <Contact display={this.props.contactReducer.isContactCardView} userId={this.props.contactReducer.contact.id} name={this.props.contactReducer.contact.name} address={this.props.contactReducer.contact.address} number={this.props.contactReducer.contact.number} email={this.props.contactReducer.contact.email} />
             </React.Fragment>
         )
 

@@ -4,10 +4,10 @@ import ContactUpdate from '../components/contactUpdate';
 const mapStateToProps =  (state) =>({
     contactReducer : state.ContactReducer
 })
-const ContactsViewContainer = connect(
+const ContactUpdateContainer = connect(
 mapStateToProps,
 )(ContactUpdate)
 
 
 
-export default ContactUpdate;
+export default ContactUpdateContainer;

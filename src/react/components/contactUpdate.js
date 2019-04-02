@@ -27,10 +27,29 @@ class ContactUpdate extends React.Component{
     
                  action = this.actionCreater.contactCardView(true);
                 this.props.dispatch(action);
+                
+                let contacts = this.props.contactReducer.contacts;
+                contacts = this.getUpdatedContacts(contacts, resp.user);
+                action = this.actionCreater.fetchContacts(contacts);
+                this.props.dispatch(action);
             });
   
     }
 
+    getUpdatedContacts(contacts, updatedContact){
+       let updatedContactList = [];
+
+       for (var i = 0, len = contacts.length; i < len; i++) {
+        
+        if(contacts[i].id === updatedContact.id)
+        continue;
+        
+        updatedContactList.push(contacts[i]);
+        }
+          
+        updatedContactList.push(updatedContact);
+        return updatedContactList;
+    }
     getContactInfoForUpdate(){
         let name = document.getElementById('user-name').value;
         let address = document.getElementById('user-address').value;

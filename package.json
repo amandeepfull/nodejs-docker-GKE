@@ -3,12 +3,10 @@
     "start": "node server.js",
     "build": "webpack --mode development",
     "watch": "webpack --watch",
-    "dev": "npm start & watch"
+    "dev" : "npm start & watch"
   },
   "name": "ContactApp",
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-stage-2": "^7.0.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-react-html-attrs": "^2.1.0",
@@ -22,10 +20,7 @@
     "precond": "^0.2.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-redux": "^6.0.1",
     "redis": "^2.8.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
     "uuid": "^3.3.2",
     "webpack-dev-server": "^3.1.10"
   },

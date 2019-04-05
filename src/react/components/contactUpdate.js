@@ -75,10 +75,10 @@ class ContactUpdate extends React.Component{
     return (
         <div id='contact-update-view' className='contactView' data-userid={this.props.userId}>
         <h2> Update Contact </h2>
-        Name  <input type='text' placeholder={name} size='40' id="user-name"/><br/><br/>
-        Address  <input type='text' value={address} size='40' id="user-address"/><br/><br/>
-        Number  <input type='text' value={number} size='40' id="user-number"/><br/><br/>
-        Email  <input type='text' value={email} size='40' id="user-email"/><br/><br/>
+        Name  <input type='text' defaultValue={name} size='40' id="user-name"/><br/><br/>
+        Address  <input type='text' defaultValue={address} size='40' id="user-address"/><br/><br/>
+        Number  <input type='text' defaultValue={number} size='40' id="user-number"/><br/><br/>
+        Email  <input type='text' defaultValue={email} size='40' id="user-email"/><br/><br/>
         <button id='button-update-contact' onClick={this.handleClick}>Save</button>
         </div>
     )

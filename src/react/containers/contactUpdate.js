@@ -9,5 +9,4 @@ mapStateToProps,
 )(ContactUpdate)
 
 
-
 export default ContactUpdateContainer;

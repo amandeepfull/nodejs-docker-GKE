@@ -1,10 +1,16 @@
-# node-redis-app-architecture
+# Contact App
 
 Its Contact application app, where we can store our contacts with few more information
 
 In this project we learned :
 1. create architecture for node app and database as Redis cache
 2. Frontend is in html
+
+# Stack used:
+1. Node.js
+2. Redis
+3. React.js
+4. Redux.js
 
 Redis : we configure for only local host, if we want we can directly connect with remote host of redis server and make use.
 
@@ -17,4 +23,3 @@ It will make the things easy and we can configure all things by our localhost.
 
 **Learning and building is in under process**
 
-**Soon, We will be start working on react and redux for handling the frontend**

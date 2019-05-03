@@ -4,7 +4,7 @@ Its Contact application app, where we can store our contacts with few more infor
 
 In this project we learned :
 1. create architecture for node app and database as Redis cache
-2. Frontend is in html
+2. Frontend is in react>.js
 
 # Stack used:
 1. Node.js

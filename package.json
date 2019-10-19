@@ -3,7 +3,7 @@
     "start": "node server.js",
     "build": "webpack --mode development",
     "watch": "webpack --watch",
-    "dev" : "npm start & watch"
+    "dev": "npm start & watch"
   },
   "name": "ContactApp",
   "dependencies": {

@@ -1,8 +1,8 @@
-const redisService = include('src/services/redis/redis_client')
-const redisKeysService = include('src/services/redis/redis_keys')
+const redisService = require('../../src/services/redis/redis_client');
+const redisKeysService = require('../../src/services/redis/redis_keys')
 const uuid = require('uuid/v1')
-const objUtil = include('src/utility/objUtility')
-const userUtil = include('src/utility/userUtility')
+const objUtil = require('../../src/utility/objUtility')
+const userUtil = require('../../src/utility/userUtility')
 
 class ContactService{
 

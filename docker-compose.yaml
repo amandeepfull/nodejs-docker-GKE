@@ -6,6 +6,6 @@ services:
 
   contact-app:
     restart: always
-    build: .
+    image: redisdemo_contact-app:latest
     ports:
       -  "3038:3038" 

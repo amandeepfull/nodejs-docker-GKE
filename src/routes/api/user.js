@@ -1,5 +1,5 @@
 var router = require('express').Router({mergeParams: true})
-var userService = include('src/services/user')
+var userService = require('../../services/user')
 
 router.get('/contacts', (req, res) => {
     userService.getUserContacts('amandeepContactAppId').then((usersResp)=>{

@@ -1,11 +1,9 @@
 const redis = require('redis');
- const bluebird = require("bluebird");
+const bluebird = require("bluebird");
+const config  = require("../../../config/index")
 
- const config = include('config');
-// const logger = include('src/lib/logging');
-
- bluebird.promisifyAll(redis.RedisClient.prototype);
- bluebird.promisifyAll(redis.Multi.prototype);
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
 
 class RedisService {
 
@@ -15,12 +13,11 @@ class RedisService {
 
     quit() {
         this.client.quit();
-        logger.info('closed redis connection');
     }
 
     newClient(options) {
 
-        let client = redis.createClient(options.port, options.host, {'password': options.key});
+        let client = redis.createClient(options.port, options.host, { 'password': options.key });
 
         client.on('error', (err) => console.log('REDIS:', err));
         client.on('warning', (warn) => console.log('REDIS:', warn));

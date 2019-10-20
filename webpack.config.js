@@ -7,6 +7,7 @@ module.exports = {
         path : path.join(__dirname,'src/react'),
         filename : 'client.min.js'
     },
+    watch:true,
     module : {
         rules : [
             {

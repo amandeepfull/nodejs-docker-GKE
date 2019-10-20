@@ -6,6 +6,11 @@ services:
 
   contact-app:
     restart: always
-    image: redisdemo_contact-app:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
-      -  "3038:3038" 
+      -  "3032:3032" 
+    volumes:
+      - /contact-app/node_modules
+      - .:/contact-app

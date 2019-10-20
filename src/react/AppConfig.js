@@ -3,7 +3,7 @@
 class AppConfig{
 
    static getServerUrl(){
-    return "http://localhost:3038/";
+    return "http://localhost:3032/";
    }
 
 }

@@ -9,8 +9,8 @@ class ContactSave extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            titleValue : "save your contact",
-            view : 'save-contact-view',   
+            titleValue : "Hi Everyone, save your data",
+            view : 'save-contact-view', 
         }
 
        this.handleClick = this.handleClick.bind(this);

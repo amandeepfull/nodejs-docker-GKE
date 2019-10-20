@@ -10,7 +10,6 @@ router.get('/contacts', (req, res) => {
 
 router.get('/contact/:contactId', (req, res)=>{
 
-    console.log("req : "+req.params);
     userService.getContactById(req.params.contactId).then((contact)=>{
         res.json(contact);
     })

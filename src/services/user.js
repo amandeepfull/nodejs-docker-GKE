@@ -77,8 +77,6 @@ resolve({'users':arrUser,'ok' : true})
 
 getContactById(userId){
 return new Promise((resolve, reject) =>{
-
-    console.log("userId : "+userId);
     redisService.client.get(redisKeysService.getUserKey(userId), (err, contact) =>{        
         
         if(err)

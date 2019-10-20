@@ -9,7 +9,7 @@ class ContactSave extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            titleValue : "Hi Everyone, save your data",
+            titleValue : "Hi Everyone, save your contact",
             view : 'save-contact-view', 
         }
 

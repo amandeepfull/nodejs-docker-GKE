@@ -8,6 +8,10 @@ module.exports = {
         filename : 'client.min.js'
     },
     watch:true,
+    watchOptions: {
+        poll: 300
+      },
+
     module : {
         rules : [
             {

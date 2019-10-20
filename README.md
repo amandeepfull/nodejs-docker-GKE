@@ -69,6 +69,13 @@ It will make the things easy for debugging and we can configure all things by ou
 
 6. docker-compose logs
 
+# Docker Volume
+How to use in React App:
+    1. Run react app using docker-compose up
+    2. Open another terminal and enter command npm run watch
+
+Now if we make any changes in app it can reflect in browser.
+
 
 **Learning and building is in under process**
 

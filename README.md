@@ -23,7 +23,7 @@ if we want to manage remote redis from our local we can link remote server with 
 It will make the things easy for debugging and we can configure all things by our localhost.
 
 
-#Docker terminal commands:
+# Docker terminal commands:
 1.  docker run
 
 2.  docker ps 
@@ -109,7 +109,9 @@ It will make the things easy for debugging and we can configure all things by ou
 
 4. docker-compose start
 
-5. docker-compose logs
+5. docker-compose kill
+
+6. docker-compose logs
 
 **Learning and building is in under process**
 

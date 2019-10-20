@@ -12,6 +12,9 @@ In this project we learned :
 2. Redis
 3. React.js
 4. Redux.js
+5. Docker
+6. Kubernetes
+7. Google Cloud 
 
 Redis : we configure for only local host, if we want we can directly connect with remote host of redis server and make use.
 

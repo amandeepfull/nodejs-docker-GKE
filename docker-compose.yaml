@@ -1,0 +1,11 @@
+version: '3'
+services: 
+  
+  redis-server:
+    image: 'redis'
+
+  contact-app:
+    restart: always
+    build: .
+    ports:
+      -  "3038:3038" 

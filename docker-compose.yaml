@@ -3,10 +3,9 @@ services:
   
   redis-server:
     image: 'redis'
-    expose:
-      - 6379
 
   contact-app:
-    image: 8859aman/contact-app
+    restart: always
+    build: .
     ports:
       -  "3038:3038" 

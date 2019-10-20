@@ -1,7 +1,7 @@
 
 FROM node:alpine
 
-WORKDIR /contact-app
+WORKDIR /my-contact-app
 
 COPY ./package.json ./
 RUN npm install

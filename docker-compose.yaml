@@ -1,9 +1,11 @@
 version: '3'
-services: 
+services: # Containers
   
+  # Redis container
   redis-server:
     image: 'redis'
 
+  # Web app container
   contact-app:
     restart: always
     build: 
@@ -14,3 +16,13 @@ services:
     volumes:
       - /contact-app/node_modules
       - .:/contact-app
+  
+  # Test container
+  test:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /contact-app/node_modules
+      - .:/contact-app
+    command: ["npm","test"]  

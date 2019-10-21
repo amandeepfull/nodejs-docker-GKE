@@ -27,7 +27,7 @@ It will make the things easy for debugging and we can configure all things by ou
 
 
 # Docker terminal commands:
-1.  docker run
+1.  docker run image
 
 2.  docker ps 
 
@@ -71,10 +71,10 @@ It will make the things easy for debugging and we can configure all things by ou
 
 # Docker Volume
 How to use in React App:
-    1. Run react app using docker-compose up
-    2. Open another terminal and enter command npm run watch
+1. Run react app using docker-compose up
+2. Open another terminal and enter command npm run watch
 
-Now if we make any changes in app it can reflect in browser.
+Now if we make any changes in app and reload the browser it can reflect in browser.
 
 
 **Learning and building is in under process**

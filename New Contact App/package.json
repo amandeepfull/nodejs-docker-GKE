@@ -1,0 +1,40 @@
+{
+  "name": "new-contact-app",
+  "version": "",
+  "description": "It is contact application, where a person can stores it contacts",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandeepfull/node-redis-app-architecture.git"
+  },
+  "author": "Amandeep Singh Pannu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amandeepfull/node-redis-app-architecture/issues"
+  },
+  "homepage": "https://github.com/amandeepfull/node-redis-app-architecture#readme",
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "body-parser": "^1.19.0",
+    "config": "^3.2.3",
+    "express": "^4.17.1",
+    "nconf": "^0.10.0",
+    "path": "^0.12.7",
+    "precond": "^0.2.3",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.3",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "chai-http": "4.2.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "5.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}

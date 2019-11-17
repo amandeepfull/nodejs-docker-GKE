@@ -1,0 +1,44 @@
+version: '3'
+services: # Containers
+  
+  # Redis container
+  redis-server:
+    restart: always
+    image: 'redis'
+
+
+  # Frontend container
+  client:
+    restart: always
+    build:
+      context: ./client/
+      dockerfile: Dockerfile.client
+    expose:
+        - 3000    
+    links:
+      - contact-app  
+    ports:
+      - "3000:3000"
+    
+
+
+  # Web app container
+  contact-app:
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    expose:
+      - 5000  
+    ports:
+      -  "5000:5000" 
+  
+  # # Test container
+  # test:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /contact-app/node_modules
+  #     - .:/contact-app
+  #   command: ["npm","test"]  

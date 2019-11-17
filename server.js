@@ -53,7 +53,7 @@ if (!global.base_dir) {
     }
   
     start() {
-      this.server = this.app.listen( 3000, () => {
+      this.server = this.app.listen( 5000, () => {
         const port = this.server.address().port
         console.log(`app listening on port ${port}`)
         process.on('SIGINT', this.stop)

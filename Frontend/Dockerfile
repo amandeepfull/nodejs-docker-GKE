@@ -3,13 +3,14 @@ FROM node:alpine as builder
 
 WORKDIR /contact-app
 
-COPY ./package.json ./
+COPY package.json .
 RUN npm install
-COPY ./ ./
+COPY . .
 
 RUN npm run build
 
-From nginx
+FROM nginx
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /contact-app/build /usr/share/nginx/html
 
-CMD ["npm","start"]

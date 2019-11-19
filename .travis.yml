@@ -1,9 +1,25 @@
 sudo: required
+
 services:
-  - docker 
+  - docker
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.8.0
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.23.2
 
 before_install:
-  - docker build -t aman8859/contact-app -f Dockerfile.dev .
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+before_script:
+  - docker-compose up -d --build
 
 script:
-  - docker run -e CI=true aman8859/contact-app npm run test
+  - docker-compose exec server npm run test
+
+after_script:
+  - docker-compose down

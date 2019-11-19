@@ -6,4 +6,4 @@ before_install:
   - docker build -t aman8859/contact-app -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true aman8859/contact-app npm run test -- --coverage
+  - docker run -e CI=true aman8859/contact-app npm run test

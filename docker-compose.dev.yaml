@@ -20,7 +20,7 @@ services: # Containers
     links:
       - server 
     ports:
-      - "3000:3000" # 80 is nginx default port 
+      - "3000:3000" 
     
   # Node server container
   server:
@@ -36,12 +36,12 @@ services: # Containers
     ports:
       -  "5000:5000" 
   
-  # # Test container
+  # Test container
   # test:
   #   build: 
   #     context: .
   #     dockerfile: Dockerfile.dev
-  #   volumes:
-  #     - /contact-app/node_modules
-  #     - .:/contact-app
+  #   # volumes:
+  #     # - /contact-app/node_modules
+  #     # - .:/contact-app
   #   command: ["npm","test"]  

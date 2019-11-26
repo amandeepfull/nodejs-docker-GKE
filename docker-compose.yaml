@@ -11,7 +11,7 @@ services: # Containers
     restart: always
     build:
       context: ./Frontend/
-      dockerfile: Dockerfile.client
+      dockerfile: Dockerfile
    # volumes:
    #  - .:/contact-app
    # -  ./contact-app/Frontend/node_modules

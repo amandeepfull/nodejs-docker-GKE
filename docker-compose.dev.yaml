@@ -21,6 +21,8 @@ services: # Containers
       - server 
     ports:
       - "3000:3000" 
+    command: npm run start
+
     
   # Node server container
   server:

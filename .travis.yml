@@ -23,3 +23,15 @@ script:
 
 after_script:
   - docker-compose down
+
+
+deploy:
+provider: elasticbeanstalk
+region: "us-east-2"
+app : "docker-contact-app"
+env : "DockerContactApp-env"
+bucket_name: "elasticbeanstalk-us-east-2-141906105167"
+bucket_path: "docker-contact-app"
+on:
+  branch: master
+

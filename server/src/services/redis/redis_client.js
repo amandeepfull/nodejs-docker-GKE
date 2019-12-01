@@ -1,6 +1,6 @@
 const redis = require('redis');
 const bluebird = require("bluebird");
-const config  = require("../../../config/index")
+const { redisKeys }  = require('../../../config');
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
@@ -8,7 +8,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 class RedisService {
 
     constructor() {
-        this.client = this.newClient(config.get('redis'));
+        this.client = this.newClient(redisKeys);
     }
 
     quit() {

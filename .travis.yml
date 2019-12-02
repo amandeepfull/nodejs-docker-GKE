@@ -1,4 +1,3 @@
-# Multi Container Configuration
 
 sudo: required
 
@@ -7,58 +6,16 @@ services:
 
 before_install:
   - docker build -t aman8859/contact-app ./server .
-
+  
 script:
-  - docker run aman8859/contact-app npm run test
+  - docker run -e CI=true aman8859/contact-app npm run test
 
 after_success:
   - docker build -t aman8859/multi-client ./client
   - docker build -t aman8859/multi-nginx ./nginx
   - docker build -t aman8859/multi-server ./server  
-  ## Log In to docker CLI
   -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  ## Take those images and push to docker hub
   - docker push aman8859/multi-client
   - docker push aman8859/multi-nginx
   - docker push aman8859/multi-server
-
-# Single Configuration
-
-
-# sudo: required
-
-# services:
-#   - docker
-
-# env:
-#   DOCKER_COMPOSE_VERSION: 1.8.0
-
-# env:
-#   DOCKER_COMPOSE_VERSION: 1.23.2
-
-# before_install:
-#   - sudo rm /usr/local/bin/docker-compose
-#   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-#   - chmod +x docker-compose
-#   - sudo mv docker-compose /usr/local/bin
-
-# before_script:
-#   - docker-compose up -d --build
-
-# script:
-#   - docker-compose exec server npm run test
-
-# after_script:
-#   - docker-compose down
-
-
-# deploy:
-# provider: elasticbeanstalk
-# region: "us-east-2"
-# app : "docker-contact-app"
-# env : "DockerContactApp-env"
-# bucket_name: "elasticbeanstalk-us-east-2-141906105167"
-# bucket_path: "docker-contact-app"
-# on:
-#   branch: master
 

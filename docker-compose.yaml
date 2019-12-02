@@ -7,7 +7,7 @@ services: # Containers
   frontend:   # Frontend container
     build:
       context: ./frontend/
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     volumes:
         - ./contact-app/node_modules
         - ./frontend:/contact-app
@@ -17,7 +17,7 @@ services: # Containers
   api:  # Node server container
     build: 
       context: ./server/
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     volumes:
         - ./contact-app/node_modules
         - ./server:/contact-app 
@@ -30,7 +30,7 @@ services: # Containers
   nginx:  # nginx server container
     build: 
       context: ./nginx/
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     restart: always  
     ports:
         - "3050:80" 

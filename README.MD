@@ -25,6 +25,11 @@ if we are using google cloud platform and want to use redis we can use in follow
 if we want to manage remote redis from our local we can link remote server with our local machine using external Ip of specific VM machine.
 It will make the things easy for debugging and we can configure all things by our localhost.
 
+# To Start Project in Mac
+1. Download docker in your machine
+2. Run Docker in your machine.
+3. Go to app directory
+4. docker-compose up --build 
 
 # Docker terminal commands:
 1.  docker run image

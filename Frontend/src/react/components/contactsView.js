@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from './header'
 import Title from './title'
-import AppConfig from "../AppConfig"
 import Ajax from '../services/Ajax'
 import Contact from '../containers/contact'
 import contactActionCreater from '../actions/contact'
@@ -22,7 +21,7 @@ class ContactsView extends React.Component {
 
     componentDidMount() {
 
-        fetch(AppConfig.getServerUrl() + "api/v1/user/contacts")
+        fetch("api/v1/user/contacts")
             .then(response => response.json())
             .then(data => {
                 let action = this.contactActionCreater.fetchContacts(data.users);

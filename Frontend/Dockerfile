@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /contact-app/build /usr/share/nginx/html
 

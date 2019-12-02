@@ -13,8 +13,7 @@ router.get('/css/style.css',(req,resp)=>{
 
 //welcome page
 router.get('/', (req, res)=>{
-  console.log("coming here...");
-  res.sendFile(path.join(__dirname + 'client/public/index.html'))  
+  res.sendFile(path.join(__dirname + '/../../index.html'))  
 })
 
 module.exports = router

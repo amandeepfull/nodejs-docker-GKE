@@ -2,7 +2,7 @@
 
 class Ajax {
 constructor(){
-    this.url = "http://localhost:3000/"
+    this.url = "/"
 }
 makeRequest(method, apiPath, data){
     return new Promise((resolve, reject) => {

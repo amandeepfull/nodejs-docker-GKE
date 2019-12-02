@@ -1,44 +1,39 @@
 version: '3'
 services: # Containers
+  
   redis-server: # Redis container
     image: 'redis'
+  
   frontend:   # Frontend container
     build:
       context: ./frontend/
       dockerfile: Dockerfile.dev
-    volumes:
-        - ./contact-app/node_modules
-        - ./frontend:/contact-app
-    expose:
-        - 3000    
-    links:
-        - api 
+    # volumes:
+    #     - ./contact-app/node_modules
+    #     - ./frontend:/contact-app
     ports:
         - "3000:3000" 
+  
   api:  # Node server container
     build: 
       context: ./server/
       dockerfile: Dockerfile.dev
-    volumes:
-        - ./contact-app/node_modules
-        - ./server:/contact-app
-    expose:
-        - 5000  
+    # volumes:
+    #     - ./contact-app/node_modules
+    #     - ./server:/contact-app 
     ports:
         -  "5000:5000" 
     environment:
         - REDIS_HOST=redis-server
         - REDIS_PORT=6379
+  
   nginx:  # nginx server container
     build: 
       context: ./nginx/
       dockerfile: Dockerfile.dev
     restart: always  
-    volumes:
-        - ./contact-app/node_modules
-        - ./nginx:/contact-app
     ports:
-        - "3035:80" 
+        - "3050:80" 
   
   # # Test container
   # test:

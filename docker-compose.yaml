@@ -4,13 +4,13 @@ services: # Containers
   redis-server: # Redis container
     image: 'redis'
   
-  frontend:   # Frontend container
+  client:   # client container
     build:
-      context: ./frontend/
+      context: ./client/
       dockerfile: Dockerfile
     volumes:
         - ./contact-app/node_modules
-        - ./frontend:/contact-app
+        - ./client:/contact-app
     ports:
         - "3000:3000" 
   

@@ -1,40 +1,39 @@
 version: '3'
 services: # Containers
   
-  # Redis container
-  redis-server:
-    restart: always
+  redis-server: # Redis container
     image: 'redis'
-
-  # Frontend container
-  frontend:
-    restart: always
+  
+  client:   # client container
     build:
-      context: ./Frontend/
+      context: ./client/
       dockerfile: Dockerfile
-   # volumes:
-   #  - .:/contact-app
-   # -  ./contact-app/Frontend/node_modules
-    expose:
-        - 3000    
-    links:
-      - server 
+    volumes:
+        - ./contact-app/node_modules
+        - ./client:/contact-app
     ports:
-      - "3000:80" # 80 is nginx default port 
-    
-  # Node server container
-  server:
-    restart: always
+        - "3000:3000" 
+  
+  api:  # Node server container
     build: 
-      context: .
-      dockerfile: Dockerfile.dev
-   # volumes:
-   #  - .:/contact-app
-   #  -  ./contact-app/node_modules
-    expose:
-      - 5000  
+      context: ./server/
+      dockerfile: Dockerfile
+    volumes:
+        - ./contact-app/node_modules
+        - ./server:/contact-app 
     ports:
-      -  "5000:5000" 
+        -  "5000:5000" 
+    environment:
+        - REDIS_HOST=redis-server
+        - REDIS_PORT=6379
+  
+  nginx:  # nginx server container
+    build: 
+      context: ./nginx/
+      dockerfile: Dockerfile
+    restart: always  
+    ports:
+        - "3050:80" 
   
   # # Test container
   # test:

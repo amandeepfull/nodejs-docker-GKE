@@ -25,7 +25,7 @@ after_success:
 
 deploy:
   edge: true
-  provider: elasticbeanstal
+  provider: elasticbeanstalk
   region: us-east-2
   app:  multi-docker-contact-app
   bucket_name: elasticbeanstalk-us-east-2-141906105167

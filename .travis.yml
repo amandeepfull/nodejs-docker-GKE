@@ -28,6 +28,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app:  multi-docker-contact-app
+  env: MultiDockerContactApp-env
   bucket_name: elasticbeanstalk-us-east-2-141906105167
   bucket_path: multi-docker-contact-app
   on:

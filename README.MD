@@ -62,6 +62,7 @@ It will make the things easy for debugging and we can configure all things by ou
 
 15. docker build -f <Docker File Name> . :  building docker with different filename
 
+16. docker build -f <file-url> -t <uname>/<app-name> .
 # Docker Compose terminal commands
 1. docker-compose build .
 

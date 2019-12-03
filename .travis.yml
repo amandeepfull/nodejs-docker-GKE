@@ -11,7 +11,7 @@ script:
   - docker run -e CI=true aman8859/contact-app npm run test
 
 after_success:
-  - docker build -t aman8859/multi-client ./frontend
+  - docker build -t aman8859/multi-frontend ./frontend
   - docker build -t aman8859/multi-nginx ./nginx
   - docker build -t aman8859/multi-server ./server  
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin

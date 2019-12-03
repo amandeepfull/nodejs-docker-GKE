@@ -33,6 +33,6 @@ deploy:
   bucket_path: multi-docker-contact-app
   on:
     branch: master
-  access_key_id: "$AWA_ACCESS_KEY"
-  secret_access_key: "$AWS_SECRET_KEY"  
+  access_key_id: AKIASCCSDKNHTD6NBBPX
+  secret_access_key: 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  
 

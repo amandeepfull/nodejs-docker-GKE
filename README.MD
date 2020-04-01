@@ -15,6 +15,7 @@ In this project we learned :
 5. Docker
 6. Kubernetes
 7. Google Cloud 
+8. Travis CI: Continous deployment and integration
 
 Redis : we configure for only local host, if we want we can directly connect with remote host of redis server and make use.
 

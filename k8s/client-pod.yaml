@@ -9,4 +9,4 @@ spec:
     - name: client
       image: aman8859/multi-client  # IMAGE ID FROM DOCKER HUB
       ports:
-        - containerPort: 3000 # AT THIS PORT NUMBER CONTAINER WILL BE OPEN
+        - containerPort: 3000 # THIS IS THE PORT WHERE ACTUAL APP RUNS

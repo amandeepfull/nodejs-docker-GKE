@@ -1,12 +1,12 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1 # EACH VERSION SHOWS SET OF CONFIG FILES
+kind: Pod # KIND IS CONSIDERED AS OBJECT(Values : Pod, Service, StatefulSet, ReplicaController), IT IS CREATING A OBJECT AS TYPE OF Pod WHICH IS USED TO RUN CONTAINER
 metadata:
-  name: client-pod
+  name: client-pod # NAME OF CLIENT APP
   labels:
-    component: web
+    component: web # THIS SERVICE IS CONNECTED WITH CLIENT NODE-PORT VIA SELECTOR PROPERTY.
 spec:
-  containers:
+  containers:  # CONTAINERS ARE GOING TO RUN UNDER POD
     - name: client
-      image: aman8859/multi-client  
+      image: aman8859/multi-client  # IMAGE ID FROM DOCKER HUB
       ports:
-        - containerPort: 3000 
+        - containerPort: 3000 # AT THIS PORT NUMBER CONTAINER WILL BE OPEN

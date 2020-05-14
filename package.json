@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-cluster": "kubectl apply -k . & kubectl apply -f k8s_v2",
-    "rem-all-res":"kubectl delete all --all",
+    "exit":"kubectl delete all --all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

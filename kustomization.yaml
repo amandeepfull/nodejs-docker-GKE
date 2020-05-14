@@ -1,0 +1,7 @@
+configMapGenerator:
+- name: example-redis-config
+  files:
+  - redis-config
+resources:
+  - k8s_redis/redis-deployment.yaml
+  - k8s_redis/redis-cluster-ip-service.yaml

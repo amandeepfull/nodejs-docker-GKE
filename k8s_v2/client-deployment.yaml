@@ -1,0 +1,19 @@
+apiVersion: apps/v1 ## Deployment object support only apps/v1
+kind: Deployment
+metadata:
+  name: client-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: aman8859/multi-client:0.0.1
+          ports:
+           - containerPort: 3000 

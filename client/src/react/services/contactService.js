@@ -9,7 +9,7 @@ constructor(){
     saveContact(contactInfo){
            
     return new Promise((resolve,reject)=>{
-        this.ajax.makeRequest("POST", "api/v1/user/add", contactInfo).then((resp) =>{
+        this.ajax.makeRequest("POST", "api/api/v1/user/add", contactInfo).then((resp) =>{
             resolve(resp);
            });
     })
@@ -19,7 +19,7 @@ constructor(){
 
     deleteContact(userId){
         return new Promise((resolve, reject) =>{
-            this.ajax.makeRequest("DELETE", "api/v1/user/contact/"+userId, null).then((resp) =>{
+            this.ajax.makeRequest("DELETE", "api/api/v1/user/contact/"+userId, null).then((resp) =>{
                 resolve(resp);
             });
         })
@@ -28,7 +28,7 @@ constructor(){
     
     updateContact(contact, userId){
         return new Promise((resolve, reject) =>{
-            this.ajax.makeRequest("PUT", "api/v1/user/contact/"+userId, contact).then((resp) =>{
+            this.ajax.makeRequest("PUT", "api/api/v1/user/contact/"+userId, contact).then((resp) =>{
                 resolve(resp);
             });
         })
@@ -36,7 +36,7 @@ constructor(){
 
     getContact(userId){
         return new Promise((resolve, reject) =>{
-            this.ajax.makeRequest("GET", "api/v1/user/contact/"+userId).then((resp) =>{
+            this.ajax.makeRequest("GET", "api/api/v1/user/contact/"+userId).then((resp) =>{
                 resolve(resp);
             });
         })

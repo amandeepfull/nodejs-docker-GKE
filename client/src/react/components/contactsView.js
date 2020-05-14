@@ -21,7 +21,7 @@ class ContactsView extends React.Component {
 
     componentDidMount() {
 
-        fetch("api/v1/user/contacts")
+        fetch("api/api/v1/user/contacts")
             .then(response => response.json())
             .then(data => {
                 let action = this.contactActionCreater.fetchContacts(data.users);

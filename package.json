@@ -1,0 +1,21 @@
+{
+  "name": "contact-app-k8s",
+  "version": "1.0.0",
+  "description": "Its Contact application app, where we can store our contacts with few more information",
+  "main": "index.js",
+  "scripts": {
+    "build-cluster": "kubectl apply -k . & kubectl apply -f k8s_v2",
+    "rem-all-res":"kubectl delete all --all",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandeepfull/node-redis-app-architecture.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amandeepfull/node-redis-app-architecture/issues"
+  },
+  "homepage": "https://github.com/amandeepfull/node-redis-app-architecture#readme"
+}

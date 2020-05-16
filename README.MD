@@ -90,7 +90,15 @@ Now if we make any changes in app and reload the browser it can reflect in brows
 2. Install kubectl : It consist of commands which can be use locally and in production to manage kubernetes
 
 
+# Commands
 1. Deleting webhook configuration : kubectl delete validatingwebhookconfiguration ingress-nginx-admission
  
+
+ # Logging architecture with Kubernetes
+ 1. Fluentd : Log aggregator 
+ https://docs.fluentd.org/v/0.12/articles/kubernetes-fluentd
+ 
+ 2. ElasticSearch: storage/search
+ 3. Kibana: UI
 **Learning and building is in under process**
 

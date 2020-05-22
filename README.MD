@@ -84,6 +84,13 @@ How to use in React App:
 
 Now if we make any changes in app and reload the browser it can reflect in browser.
 
+#K8S Setup
+1. Install Orace VirtualBox : It works as virtual machine on our local machine.
+1. Install minikube : It is a tool which run K8s locally on the virtual machine
+2. Install kubectl : It consist of commands which can be use locally and in production to manage kubernetes
 
+
+1. Deleting webhook configuration : kubectl delete validatingwebhookconfiguration ingress-nginx-admission
+ 
 **Learning and building is in under process**
 

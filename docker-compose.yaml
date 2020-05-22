@@ -8,9 +8,9 @@ services: # Containers
     build:
       context: ./client/
       dockerfile: Dockerfile
-    volumes:
-        - ./contact-app/node_modules
-        - ./client:/contact-app
+    # volumes:
+    #     - ./contact-app/node_modules
+    #     - ./client:/contact-app
     ports:
         - "3000:3000" 
   
@@ -18,9 +18,9 @@ services: # Containers
     build: 
       context: ./server/
       dockerfile: Dockerfile
-    volumes:
-        - ./contact-app/node_modules
-        - ./server:/contact-app 
+    # volumes:
+    #     - ./contact-app/node_modules
+    #     - ./server:/contact-app 
     ports:
         -  "5000:5000" 
     environment:

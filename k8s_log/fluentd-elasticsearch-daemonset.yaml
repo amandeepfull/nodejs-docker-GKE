@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      component: fluentd-logging
+      version: v1
+      kubernetes.io/cluster-service: "true"
+  template:
+    metadata:
+      labels:
+        component: fluentd-logging
+        version: v1
+        kubernetes.io/cluster-service: "true"
+    spec:
+      serviceAccount: fluentd
+      serviceAccountName: fluentd
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: fluentd
+        image: fluent/fluentd-kubernetes-daemonset:elasticsearch #The DaemonSet uses fluent/fluentd-kubernetes-daemonset:elasticsearch Docker image specifically configured with the Elasticsearch as the Fluentd output.
+        env:
+        - name:  FLUENT_ELASTICSEARCH_HOST
+          value: "f505e785.qb0x.com"
+        - name:  FLUENT_ELASTICSEARCH_PORT
+          value: "30216"
+        - name: FLUENT_ELASTICSEARCH_SCHEME
+          value: "https"
+        - name: FLUENT_UID #Fluentd needs root permission to read logs in /var/log and write pos_file to /var/log. To avoid permission error, set FLUENT_UID environment variable to 0 in your DaemonSet manifest
+          value: "0"
+        - name: FLUENT_ELASTICSEARCH_SSL_VERSION
+          value: "TLSv1_2"  
+        # X-Pack Authentication
+        # =====================
+        - name: FLUENT_ELASTICSEARCH_USER
+          value: "abf54990f0a286dc5d76"
+        - name: FLUENT_ELASTICSEARCH_PASSWORD
+          value: "75c4bd6f7b"
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers

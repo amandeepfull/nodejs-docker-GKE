@@ -1,3 +1,10 @@
+
+branches:
+1. new_contact_app :  configurations for running multi-container app using docker-compose in local environment
+2. multi-container-EB: configuration for deploying app to AWS elastic Beanstalk
+3. kubernetes: configurations for running kubernetes in minikube(local environment)
+4. k8s/production: configurations to deploy Google Cloud Kubernetes Engine
+
 # Contact App
 
 Its Contact application app, where we can store our contacts with few more information

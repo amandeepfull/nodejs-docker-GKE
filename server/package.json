@@ -27,7 +27,7 @@
     "nconf": "^0.10.0",
     "path": "^0.12.7",
     "precond": "^0.2.3",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
